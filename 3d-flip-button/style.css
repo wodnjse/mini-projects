@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* 화면 정중앙 위치 이동 */
+    perspective: 1000px; /* 원근감, 거리감 조절 */
+}
+
+.flip-btn {
+    width: 200px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100px; /* 요쇼의 height 값과 line-height 값이 같으면 '수직 중앙정렬' BUT 텍스트가 한 줄 일때만 가능 */
+    transform-style: preserve-3d; /* 3D공간 배치 */
+    transition: 0.5s;
+    cursor: pointer; /* 마우스 커서모양 지정 */
+}
+.flip-btn:hover {
+    transform: rotateX(-90deg);
+}
+
+.front {
+    background-color: goldenrod;
+    height: 100px;
+    transform: translateZ(50px);
+}
+
+.back {
+    background-color: darkgoldenrod;
+    height: 100px;
+    transform: rotateX(90deg) translateZ(150px);
+}
