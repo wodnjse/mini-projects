@@ -4,45 +4,38 @@
 }
 
 html {
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Pretendard Variable", Pretendard, -apple-system,
+        BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+        "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
 html:focus-within {
     scroll-behavior: smooth;
 }
 
-div,
-p {
-    box-sizing: border-box;
-}
-
-.global-width {
-    max-width: 620px;
-    margin: 0 auto;
-    /* padding: 0 1rem; */
-}
-
-#logo {
-    width: 100%;
-}
-
-.thumbnail-wrappper {
-    width: 25%;
-}
-
-#lotte-tower {
-    position: relative;
-    padding-top: 56.25%;
-    width: 100vw;
+body {
     height: 100vh;
-    background-size: cover !important;
-    background-attachment: fixed;
-    background-attachment: initial;
+    width: 100%;
+    vertical-align: middle;
 }
 
-/* a {
-    font-family: "Noto Sans KR", sans-serif;
+.scoller {
+    margin: 0 300px;
+    position: relative;
     width: 100%;
+    display: flex;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+#text {
     margin: 0 auto;
-    font-size: xx-large;
-} */
+    box-sizing: border-box;
+    white-space: nowrap;
+    /* width: 100%; */
+    letter-spacing: 0.3vw;
+    font-weight: 600;
+    font-size: 5rem;
+}
