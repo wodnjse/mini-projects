@@ -3,13 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <title>Smooth-Scrolling</title>
-        <link href="style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <script defer type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <div class="scoller">
-            <a id="link-up-the-page" href="#link-down-the-page">go to End</a>
-            <p id="text">Smooth Scroooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooolling</p>
-            <a id="link-down-the-page" href="#link-up-the-page">안녕하시오</a>
+            <div class="circle">
+                <a class="move-to" id="link-up-the-page" href="#link-down-the-page">go to End</a>
+            </div>
+            <p id="text">Smooth Scrooooooooooooooolling!</p>
+            <div class="circle">
+                <a class="move-to" id="link-down-the-page" href="#link-up-the-page">go to Front</a>
+            </div>
         </div>
     </body>
 </html>

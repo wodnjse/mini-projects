@@ -1,13 +1,20 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Modak&family=Noto+Sans+KR:wght@100;300;400;500;900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); */
+@font-face {
+    font-family: 'Acma';
+    font-style: normal;
+    src: url("../smooth-scrolling/fonts/PPAcma-Semibold.otf") format('opentype');
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 html {
-    font-family: "Pretendard Variable", Pretendard, -apple-system,
-        BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
-        "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    /* font-family: 'Modak', cursive; */
+    /* font-family: 'Noto Sans KR', sans-serif; */
+    font-family: 'Acma';
 }
 
 html:focus-within {
@@ -15,6 +22,8 @@ html:focus-within {
 }
 
 body {
+    overflow-x: auto;
+    overflow-y: hidden;  /* 세로 스크롤바 비활성화 */
     height: 100vh;
     width: 100%;
     vertical-align: middle;
@@ -30,12 +39,28 @@ body {
     transform:translate(-50%,-50%);
 }
 
+.circle {
+    margin: 0 200px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: chartreuse;
+    border: 1px;
+}
+
+.move-to {
+    position: inherit;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
 #text {
+    /* position: absolute; */
     margin: 0 auto;
     box-sizing: border-box;
     white-space: nowrap;
     /* width: 100%; */
     letter-spacing: 0.3vw;
-    font-weight: 600;
-    font-size: 5rem;
+    /* font-weight: 600; */
+    font-size: 10rem;
 }
