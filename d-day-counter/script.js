@@ -14,6 +14,11 @@ const counterMaker = function () {
     const targetDate = new Date(targetDateInput).setHours(0, 0, 0, 0);  // 자정 기준으로
     const remaining = (targetDate - nowDate) / 1000  // '~~': Math.floor()보다 빠름
 
+    if (remaining <= 0) {
+        console.log('타이머가 종료되었습니다.');
+    } else if (isNaN(remaining)) {
+        console.log('유효한 시간대가 아닙니다.');
+    }
     const remainingDate = Math.floor(remaining / 3600 / 24);
     const remainingHours = Math.floor((remaining / 3600) % 24);
     const remainingMinutes = Math.floor(remaining / 60) % 60;
