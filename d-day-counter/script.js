@@ -51,5 +51,12 @@ const counterMaker = function () {
 const starter = function() {
     container.style.display = 'flex';
     messageContainer.style.display = 'none';
-    counterMaker();
+    counterMaker()
+    setInterval(counterMaker, 1000);
+    // for(let i=0; i<100; i++) {
+    //     setTimeout(() => {
+    //         counterMaker();
+    //         console.log(i)
+    //     }, 1000 * i);
+    // }
 };
