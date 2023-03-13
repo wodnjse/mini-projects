@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="ko">
-<head>
-    <title>D-Day</title>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>D-day</title>
-    <link rel="stylesheet" href="./style.css"/>
+    <head>
+        <title>D-Day</title>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>D-day</title>
+        <link rel="stylesheet" href="./style.css"/>
+        <script src="script.js" defer></script>
 </head>
 <body>
     <h1>D-day</h1>
@@ -29,12 +30,12 @@
             <span>초</span>
         </div>
     </div>
+    <div id="d-day-message"></div>
     <div id="target-selector">
         <input id="target-year-input" class="target-input" size="5"/> -
         <input id="target-month-input" class="target-input" size="5"/> -
         <input id="target-date-input" class="target-input" size="5"/>
     </div>
     <button onclick="counterMaker()" id="start-btn">카운트다운 시작</button>
-    <script src="script.js"></script>
 </body>
 </html>
