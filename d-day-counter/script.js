@@ -1,6 +1,7 @@
 const messageContainer = document.querySelector('#d-day-message');
 const container = document.querySelector('#d-day-container');
-// container.style.display = 'none';
+
+container.style.display = 'none';
 messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>';
 
 const dateFormMaker = function () {
@@ -19,32 +20,36 @@ const counterMaker = function () {
     const remaining = (targetDate - nowDate) / 1000  // '~~': Math.floor()보다 빠름
 
     if (remaining <= 0) {
-        console.log('타이머가 종료되었습니다.');
+        container.style.display = 'none';
         messageContainer.innerHTML = '<h3>타이머가 종료되었습니다.</h3>';
+        messageContainer.style.display = 'flex';
+        return;
     } else if (isNaN(remaining)) {
-        console.log('유효한 시간대가 아닙니다.');
+        container.style.display = 'none';
         messageContainer.innerHTML = '<h3>유효한 시간대가 아닙니다.</h3>';
+        messageContainer.style.display = 'flex';
+        return;
     }
 
     const remainingObj = {
         remainingDate: Math.floor(remaining / 3600 / 24),
-        remainingHours: Math.floor((remaining / 3600) % 24),
+        remainingHours: Math.floor(remaining / 3600) % 24,
         remainingMinutes: Math.floor(remaining / 60) % 60,
         remainingSeconds: Math.floor(remaining) % 60
     };
 
-    const documentObj = {
-        days: document.getElementById('days'),
-        hours: document.getElementById('hours'),
-        minute: document.getElementById('minute'),
-        second: document.getElementById('second')
-    };
-
+    const documentArr = ['days', 'hours', 'minute', 'second'];
     const timeKeys = Object.keys(remainingObj);
-    const docKeys = Object.keys(documentObj);
-
-    for(let i=0; i<timeKeys.length; i++) {
-        documentObj[docKeys[i]].textContent = remainingObj[timeKeys[i]];
+    
+    let i = 0;  
+    for(let tag of documentArr) {
+        document.getElementById(tag).textContent = remainingObj[timeKeys[i]]
+        i++;
     }
+};
 
-}
+const starter = function() {
+    container.style.display = 'flex';
+    messageContainer.style.display = 'none';
+    counterMaker();
+};
