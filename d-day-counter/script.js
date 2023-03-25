@@ -1,5 +1,6 @@
 const messageContainer = document.querySelector('#d-day-message');
 const container = document.querySelector('#d-day-container');
+const intervalIdArr = [];
 
 container.style.display = 'none';
 messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>';
@@ -23,11 +24,13 @@ const counterMaker = function () {
         container.style.display = 'none';
         messageContainer.innerHTML = '<h3>타이머가 종료되었습니다.</h3>';
         messageContainer.style.display = 'flex';
+        setClearInterval()
         return;
     } else if (isNaN(remaining)) {
         container.style.display = 'none';
         messageContainer.innerHTML = '<h3>유효한 시간대가 아닙니다.</h3>';
         messageContainer.style.display = 'flex';
+        setClearInterval()
         return;
     }
 
@@ -43,7 +46,7 @@ const counterMaker = function () {
     
     let i = 0;  
     for(let tag of documentArr) {
-        document.getElementById(tag).textContent = remainingObj[timeKeys[i]]
+        document.getElementById(tag).textContent = remainingObj[timeKeys[i]];
         i++;
     }
 };
@@ -52,11 +55,16 @@ const starter = function() {
     container.style.display = 'flex';
     messageContainer.style.display = 'none';
     counterMaker()
-    setInterval(counterMaker, 1000);
-    // for(let i=0; i<100; i++) {
-    //     setTimeout(() => {
-    //         counterMaker();
-    //         console.log(i)
-    //     }, 1000 * i);
-    // }
+    const intervalId = setInterval(counterMaker, 1000);
+    intervalIdArr.push(intervalId)
+    console.log(intervalIdArr)
 };
+
+const setClearInterval = function (){
+    container.style.display = 'none';
+    messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>';
+    messageContainer.style.display = 'flex';
+    for (let i=0; i<intervalIdArr.length; i++) {
+        clearInterval(intervalIdArr[i]);
+    }
+}
