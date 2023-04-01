@@ -1,35 +1,37 @@
 const messageContainer = document.querySelector('#d-day-message');
 const container = document.querySelector('#d-day-container');
-const intervalIdArr = [];
+const savedDate = localStorage.getItem('saved-date');
 
-container.style.display = 'none';
-messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>';
+const intervalIdArr = [];
 
 const dateFormMaker = function() {
     const inputYear = document.querySelector('#target-year-input').value;
     const inputMonth = document.querySelector('#target-month-input').value;
     const inputDate = document.querySelector('#target-date-input').value;
-
+    
     const dateFormat = `${inputYear}-${inputMonth}-${inputDate}`;
     return dateFormat;
 };
 
 const counterMaker = function(data) {
+    if(data !== savedDate) {
+        localStorage.setItem('saved-date', data);
+    }
     const nowDate = new Date();
     const targetDate = new Date(data).setHours(0, 0, 0, 0);  // 자정 기준으로
     const remaining = (targetDate - nowDate) / 1000  // '~~': Math.floor()보다 빠름
-
+    
     if (remaining <= 0) {
         container.style.display = 'none';
         messageContainer.innerHTML = '<h3>타이머가 종료되었습니다.</h3>';
         messageContainer.style.display = 'flex';
-        setClearInterval()
+        setClearInterval();
         return;
     } else if (isNaN(remaining)) {
         container.style.display = 'none';
         messageContainer.innerHTML = '<h3>유효한 시간대가 아닙니다.</h3>';
         messageContainer.style.display = 'flex';
-        setClearInterval()
+        setClearInterval();
         return;
     }
 
@@ -49,7 +51,7 @@ const counterMaker = function(data) {
         } else {
             return time;
         }
-    }
+    };
 
     let i = 0;  
     for(let tag of documentArr) {
@@ -59,8 +61,10 @@ const counterMaker = function(data) {
     }
 };
 
-const starter = function() {
-    const targetDateInput = dateFormMaker();
+const starter = function(targetDateInput) {
+    if(!targetDateInput) {
+        targetDateInput = dateFormMaker();
+    }
     container.style.display = 'flex';
     messageContainer.style.display = 'none';
     setClearInterval();
@@ -72,6 +76,7 @@ const starter = function() {
 };
 
 const setClearInterval = function() {
+    localStorage.removeItem('saved-date');
     for (let i=0; i<intervalIdArr.length; i++) {
         clearInterval(intervalIdArr[i]);
     }
@@ -83,3 +88,10 @@ const resetTimer = function() {
     messageContainer.style.display = 'flex';
     setClearInterval();
 }
+
+if(savedDate) {  // if문 괄호안의 값이 'truty'라면 실행 됨
+    starter(savedDate);
+} else {
+    container.style.display = 'none';
+    messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>';
+};
