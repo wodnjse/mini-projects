@@ -43,9 +43,17 @@ const counterMaker = function(data) {
     const documentArr = ['days', 'hours', 'minute', 'second'];
     const timeKeys = Object.keys(remainingObj);
     
+    const format = function(time) {
+        if (time < 10) {
+            return '0' + time;
+        } else {
+            return time;
+        }
+    }
+
     let i = 0;  
     for(let tag of documentArr) {
-        const remainingTime = remainingObj[timeKeys[i]];
+        const remainingTime = format(remainingObj[timeKeys[i]]);
         document.getElementById(tag).textContent = remainingTime;
         i++;
     }
