@@ -17,7 +17,7 @@ body {
     overflow-x: auto;
     overflow-y: hidden;  /* 세로 스크롤바 비활성화 */
     height: 100vh;
-    width: 100%;
+    /* width: 100%; */
     vertical-align: middle;
 }
 
@@ -63,4 +63,11 @@ body {
     background-color: lightgreen;
     color: #F8FFDB;
     /* user-select: none; <- 텍스트 드래그 비활성화 */
+}
+
+@media only screen and (max-width: 575px) {
+    body {
+        background-color: blueviolet;
+    }
+    
 }
