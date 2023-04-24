@@ -28,7 +28,7 @@ const createTodo = function(storageData) {
         newLi.classList.add('complete');
     }
     
-    newSpan.textContent = todoInput.value;
+    newSpan.textContent = todoContents;
     newLi.appendChild(newBtn);
     newLi.appendChild(newSpan);
     todoList.appendChild(newLi);
