@@ -52,7 +52,7 @@ const deleteAll = function() {
 
 const saveItemsFn = function() {
     const saveItems = [];
-    for(let i = 0; i < todoList.children.length; i++) { 
+    for(let i = 0; i < todoList.children.length; i++) {
         const todoObj = {
             contents : todoList.children[i].querySelector('span').textContent, 
             complete : todoList.children[i].classList.contains('complete')
@@ -70,3 +70,34 @@ if(savedTodoList) {
         createTodo(savedTodoList[i]);
     }
 }
+
+const weatherSearch = function(position) {
+    fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=517a6320fb4d742278e5db90dd2def6e`
+    )
+    .then((res) => {
+        return res.json();
+    })
+    .then((json) => {
+        console.log(json.name, json.weather[0].description);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}
+
+const accessToGo = function(position) {
+    const positionObj = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+    }
+    weatherSearch(positionObj);
+}
+
+const askForLocation = function() {
+    navigator.geolocation.getCurrentPosition(accessToGo, (err) => {
+        console.log(err)
+    });
+}
+
+askForLocation();
